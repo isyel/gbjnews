@@ -1,0 +1,160 @@
+$white: #fff;
+$dark-gray: #252120;
+$light-gray: #6e625f;
+$yellow: #fede1a;
+$pale-yellow: #fffca3;
+
+ion-nav.dark-theme {
+
+
+ion-title{
+  color:whitesmoke;
+}
+  
+  ion-navbar {
+    button {
+      color: $white !important;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  ion-content {
+    background-color: $light-gray;
+    color: $white;
+    ion-card {
+      background-color: $dark-gray !important;
+    }
+    ion-card p{
+      color:whitesmoke;
+    }
+  }
+
+  page-summary {
+    
+    #date-info {
+      color: lightgray;
+    }
+    .summary-snippet {
+      color: $white;
+    }
+
+    #summaries-navigator {
+      a {
+        background-color: $dark-gray;
+        color: $white;
+      }
+    }
+  }
+
+  page-settings {
+    .item {
+      background-color: $light-gray !important;
+      color: $white !important;
+      .selected-value {
+        color: lightgray;
+      }
+    }
+  }
+
+  articles-list .not-found-topics p {
+    color: lightgray;
+  }
+
+  .tabbar {
+    background-color: $dark-gray !important;
+    color: $white;
+    .tab-button, ion-icon {
+      color: $white;
+      &[aria-selected="true"] {
+        color: $yellow;
+        ion-icon {
+          color: $yellow;
+        }
+      }
+    }
+  }
+
+  .toolbar-title {
+    color: $white;
+  }
+
+  .header .toolbar-background {
+    background-color: $dark-gray;
+  }
+}
+
+ion-menu.dark-theme {
+
+  ion-list button.active{
+    border-left-color:whitesmoke;
+  }
+
+  ion-header {
+    .toolbar-background {
+      background-color: $dark-gray;
+    }
+  }
+  ion-content {
+    background-color: $dark-gray;
+    .item {
+      background-color: $dark-gray !important;
+      color: $white !important;
+    }
+  }
+  .toolbar .searchbar-ios .searchbar-input {
+    background-color: $white;
+  }
+}
+
+ion-alert.dark-theme {
+  .alert-wrapper {
+    background-color: $light-gray;
+    color: $white;
+    .alert-head {
+      background-color: $dark-gray;
+    }
+    .alert-message {
+      border-top: 1px solid #dedede;
+      border-bottom: 1px solid #dedede;
+      color: $white;
+      padding: 25px;
+      &:empty {
+        border: none;
+        padding: 0;
+      }
+    }
+    button {
+      color: white;
+      .alert-radio-label, .alert-checkbox-label {
+        color: $white;
+      }
+      .alert-radio-inner, .alert-checkbox-inner {
+        background-color: $yellow;
+        border-color: $dark-gray;
+      }
+      &[aria-checked="true"] {
+        .alert-radio-icon {
+          border-color: $yellow;
+        }
+        .alert-checkbox-icon {
+          background-color: $yellow;
+          border-color: $yellow;
+        }
+        .alert-radio-label {
+          color: $yellow;
+        }
+      }
+    }
+  }
+  // fixes for ios
+  &.alert-ios {
+    [aria-checked="true"] {
+      .alert-radio-inner {
+        background-color: transparent !important;
+        border-color: $yellow !important;
+      }
+    }
+  }
+}

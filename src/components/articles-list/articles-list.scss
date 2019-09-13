@@ -1,0 +1,38 @@
+articles-list {
+
+  ion-card {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .img-holder {
+    position: relative;
+    @media (min-width: 600px) {
+      height: 250px;
+      img {
+        display: none;
+      }
+    }
+
+    @media (max-width: 590px) {
+      height: 250px;
+      img {
+        display: none;
+      }
+    }
+
+    background-size: cover;
+    @media (min-width: 800px) {
+      height: 500px;
+    }
+
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .stats-info
+  {
+    color:gray;
+    font-size:1.2rem;
+  }
+}

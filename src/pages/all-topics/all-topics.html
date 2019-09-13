@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!--[innerHtml]="selectedCategory?.name | safeHtml"-->
+    <ion-title > <img alt="logo" height="40"   src="assets/imgs/NewSum_logo.jpg" ></ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="displaySettingsPage()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="refreshArticles($event)" refresherHeight="100px">
+    <ion-refresher-content pullingIcon="arrow-dropdown"
+                           pullingText="{{'Pull to refresh' | translate}}"
+                           refreshingSpinner="crescent"
+                           refreshingText="{{'Refreshing articles' | translate}}...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="isRefreshing" class="refresh-content-cover"></div>
+  <div>
+    <articles-list
+      (loadAnother)="loadAnother($event)"
+      [category]="selectedCategory"
+      [articles]="topics"
+      [selectedCategoryDefaultImage]="selectedCategoryDefaultImage"
+      [selectedCategoryForUppercase]="selectedCategoryForUppercase"
+    >
+    </articles-list>
+  </div>
+</ion-content>

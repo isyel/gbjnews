@@ -1,1 +1,25 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-nav #header [root]="rootPage" [class]="selectedTheme" swipeBackEnabled="false" #mainNav main></ion-nav>
+
+<ion-menu [content]="header" [class]="selectedTheme">
+    <ion-header>
+        <ion-toolbar>
+            <ion-searchbar
+                [(ngModel)]="searchInput"
+                placeholder="{{ 'search' | translate }}"
+                (keyup)="searchForTopic($event, searchInput)">
+            </ion-searchbar>
+            <!-- <ion-buttons right>
+                <button menuClose class="closeMenuBtn">
+                    <ion-icon name="md-close"></ion-icon>
+                </button>
+            </ion-buttons> -->
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <button menuClose ion-item *ngFor="let c of availableCategories;let i= index" (click)="selectCategory(c,i)" [innerHTML] = "c.name | safeHtml"
+             [class.active]="i == selectedIndex" >
+            </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>

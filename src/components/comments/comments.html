@@ -1,0 +1,46 @@
+
+<!--
+  Generated template for the SummaryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    
+  <ion-navbar>
+    <ion-title>Comments</ion-title>
+    <ion-buttons end> <button icon-only (click)="closemodal()"> <ion-icon name="close" ></ion-icon> </button> </ion-buttons> 
+      
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div *ngIf="!comments || comments?.length === 0" class="not-found-topics">
+        <p>{{"No Comment found" | translate}}</p>
+      </div>
+    <ion-refresher (ionRefresh)="refreshComments($event)" refresherHeight="100px">
+        <ion-refresher-content pullingIcon="arrow-dropdown"
+                               pullingText="{{'Pull to refresh' | translate}}"
+                               refreshingSpinner="crescent"
+                               refreshingText="{{'Refreshing Comments' | translate}}...">
+        </ion-refresher-content>
+      </ion-refresher>
+    <ion-list no-lines>
+        <ion-item padding *ngFor="let comment of comments;trackBy: trackById;">
+          <ion-avatar item-start>
+            <img [src]="comment?.author_avatar_urls['48']">
+          </ion-avatar>
+          <div item-content>
+              <span>{{comment?.author_name}}</span>              
+            <span item-end style="float:right;font-size:12px;">{{comment?._date}}</span>
+            <p [innerHtml]=" comment?.content?.rendered | safeHtml"></p>
+          </div>
+          
+        </ion-item>
+      </ion-list>
+      <ion-infinite-scroll (ionInfinite)="loadAnother($event)">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+</ion-content>
+    

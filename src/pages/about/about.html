@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{"About us" | translate}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-img  src="assets/imgs/NewSum_logo.png"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        Version {{ versionNumber}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 [innerHtml]="'ABOUT_INFO' | translate" >
+      </ion-col>
+    </ion-row>
+    <!--<ion-row id="links">
+      <ion-col col-12>
+        <anchor text="{{ 'ABOUT_MORE' | translate}}" href="http://www.scify.gr/site/en/text-analytics"></anchor><br>
+        <anchor text="{{ 'ABOUT_CODE' | translate}}" href="https://github.com/scify/NewSumMobile"></anchor>
+      </ion-col>
+    </ion-row>-->
+  </ion-grid>
+
+
+</ion-content>

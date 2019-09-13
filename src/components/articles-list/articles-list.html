@@ -1,0 +1,29 @@
+<div *ngIf="!articles || articles.length === 0" class="not-found-topics">
+  <p>{{"No topics found" | translate}}</p>
+</div>
+
+<div class="card-background-page">
+  <ion-card padding-vertical *ngFor="let article of articles;trackBy: trackById;" (click)="selectTopicAndDisplaySummary(article)" >
+    <div class="img-holder" [ngStyle]="{'background-image': 'url('+(article.imageUrls.length > 0 && (isConnectedToWiFi || selectedImgLoadOption === 'all')
+          ? article.imageUrls[0]  : selectedCategoryDefaultImage) +')' }" >
+      <img src="{{(article.imageUrls.length > 0 && (isConnectedToWiFi || selectedImgLoadOption === 'all')
+          ? article.imageUrls[0]  : selectedCategoryDefaultImage)}}"/>
+      <div class="info-category-background {{category?.name}}"><span [innerHtml]=" ( category ? category?.name : article?._category?.name) | safeHtml "></span><span class="info-date">
+          {{article.DaysAgo ? (("BEFORE" | translate) + article.DaysAgo + ("DAYS" | translate)) : (article.DisplayTime | translate)}}
+        </span></div>
+      <div class="info-background {{category?.name}}">
+
+        <div><span class="title " [innerHtml]=
+          "(true ? article.title.rendered : selectedCategoryForUppercase)|highlightify:searchToken:'search-highlight':true|safeHtml" ></span>
+        </div>
+      </div>
+    </div>
+
+    <ion-card-content>
+      <div [innerHtml]="article.excerpt.rendered |highlightify:searchToken:'search-highlight':true| safeHtml "></div>
+    </ion-card-content>
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</div>

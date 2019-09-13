@@ -1,0 +1,95 @@
+<!--
+  Generated template for the SummaryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title [innerHtml]="selectedCategory?.name | safeHtml"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div (swipe)="swipeActivity($event)">
+    <div id="img-container">
+      <img [src]="selectedImage"/>
+      <!--<div class="info-category-background {{selectedCategory?.name}}">{{selectedCategory?.name}}
+        <span class="timestamp info-date">
+          {{selectedTopic?.DisplayTime}}
+        </span>
+      </div>-->
+
+      <div id="title-background" class="info-background summary">
+        <span class=" {{selectedCategory?.name}} summary">{{selectedCategory?.name}}</span>
+      </div>
+    </div>
+
+    <ion-grid id="sources-grid" padding>
+      <div class="summary-title"><span id="title" [innerHtml]="(selectedTopic?.title?.rendered)|safeHtml" ></span>
+      </div>
+        <ion-row>
+            <ion-col>
+              <div class="summary-snippet" >
+                  <p>
+                    <span [innerHtml]="selectedTopic?.content?.rendered | safeHtml"></span>
+                  </p>
+              </div>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+
+      <a *ngIf="commentcount > 0" (click)="presentCommentsModal()" style="font-weight: bold;
+      font-size: 17px;text-decoration:underline;
+      margin-left: 20px;">View {{true?'':commentcount}} comment{{true || commentcount>1?'s':''}}</a>
+
+      <ion-list>
+        <p style="
+          font-weight: bold;
+          font-size: 20px;
+          margin-left: 20px;
+        ">Leave A Comment</p>
+        <ion-item>
+          <ion-textarea [(ngModel)]="commentComment" placeholder="Comment:"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="commentName" type="text" placeholder="Name:"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="commentEmail" type="email" placeholder="Email:"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="commentWebsite" type="text" placeholder="Website:"></ion-input>
+        </ion-item>
+        <ion-item>
+          <button ion-button block padding (click)="postComment()">Post Comment</button>
+        </ion-item>
+
+      </ion-list>
+
+    <ion-grid id="summaries-navigator" padding>
+      <ion-row>
+        <ion-col>
+          <a id="nav-to-previous" href="javascript:void(0)" (click)="swipeActivity({direction: 4})">
+            <ion-icon name="arrow-back"></ion-icon>
+          </a>
+        </ion-col>
+        <ion-col>
+          <a id="nav-to-share" href="javascript:void(0)" (click)="share()">
+            <ion-icon name="share"></ion-icon>
+          </a>
+        </ion-col>
+        <ion-col>
+          <a id="nav-to-next" href="javascript:void(0)" (click)="swipeActivity({direction: 2})">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </a>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

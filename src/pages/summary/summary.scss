@@ -1,0 +1,90 @@
+page-summary {
+  ion-title {
+    text-align: left;
+  }
+  .grid {
+    padding-top: 0;
+  }
+
+  #img-container {
+    position: relative;
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+    #title-background {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+  #title {
+    color: white;
+    //padding: 12px;
+    position: relative;
+  }
+  #date-info {
+    font-size: small;
+    color: gray;
+    margin-bottom: 10px;
+    .timestamp {
+      text-align: right;
+    }
+  }
+  .timestamp {
+    text-align: right;
+  }
+  .summary-snippet {
+    color: black;
+    padding: 0;
+    margin-top: 0;
+    line-height: 1.5em;
+    p {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+
+  }
+
+  #summaries-navigator {
+    padding: 10px;
+    margin-bottom: 25px;
+    #nav-to-previous {
+      text-align: center;
+      display: block;
+    }
+    #nav-to-next {
+      text-align: center;
+      display: block;
+    }
+    #nav-to-share {
+      text-align: center;
+      display: block;
+    }
+    a {
+      padding: 12px 12px;
+      text-decoration: none;
+      max-width: 58px;
+      margin: 0 auto;
+      font-size: x-large;
+      border-radius: 50px;
+    }
+  }
+
+  iframe{
+    display: none;
+  }
+}
+
+
+
+.summary-snippet .wp-caption.alignnone{
+  top:0;
+  left: 0;
+  width: 100% !important;
+}
+
+figure {
+  margin: 1em 0px !important;
+}
