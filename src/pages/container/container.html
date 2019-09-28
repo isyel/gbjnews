@@ -1,0 +1,33 @@
+<!--
+  Generated template for the ContainerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar
+        [(ngModel)]="searchInput"
+        placeholder="{{ 'search' | translate }}"
+        (keyup)="searchForTopic($event, searchInput)">
+    </ion-searchbar>
+    <!--<ion-buttons right>
+      <button ion-button icon-only (click)="displaySettingsPage()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+</ion-header>
+  
+<ion-content no-bounce>
+  <super-tabs *ngIf="availableCategories" scrollTabs indicatorColor="primary" selectedTabIndex="0" badgeColor="light" [config]="{ sideMenu: 'left' }" 
+  (tabSelect)="onTabSelect($event)">
+    <super-tab *ngFor="let availableCategory of availableCategories" [root]="page" [rootParams]="{category:availableCategory}" 
+    [title]="availableCategory.name" [id]="availableCategory.id"></super-tab>
+  </super-tabs>
+</ion-content>

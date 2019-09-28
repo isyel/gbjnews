@@ -1,0 +1,27 @@
+<ion-nav #header [root]="rootPage" [class]="selectedTheme" swipeBackEnabled="false" #mainNav main></ion-nav>
+
+<ion-menu [content]="header" [class]="selectedTheme">
+    <ion-content>
+        <div class="logo-container">
+            <img alt="logo" src="assets/imgs/NewSum_logo.jpg" >
+        </div>
+        <ion-list>
+            <button ion-item (click)="goToSettings()">
+                Settings
+            </button>
+            <button ion-item (click)="goToAbout()">
+                About Us
+            </button>
+            <button ion-item (click)="goToContactUs()">
+                Contact Us
+            </button>
+            <button ion-item (click)="goToAdvertising()">
+                Advertising
+            </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<div id="global-center-loader">
+    <ion-spinner name="crescent"></ion-spinner>
+</div>

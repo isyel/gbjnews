@@ -1,0 +1,116 @@
+<!--
+  Generated template for the SummaryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title [innerHtml]="( selectedTopic?._category?.name || selectedCategory?.name ) | safeHtml"></ion-title>
+    <ion-buttons right>
+        <a id="nav-to-share" href="javascript:void(0)" (click)="share()">
+          <ion-icon name="share"></ion-icon>
+        </a>
+    </ion-buttons>
+  </ion-navbar>
+  <line-progress-bar [visible]="progressVisible"></line-progress-bar>
+</ion-header>
+
+
+<ion-content>
+    
+  <div (swipe)="swipeActivity($event)">
+
+    <ion-grid id="sources-grid" padding>
+      <div class="summary-title"><span id="title" [innerHtml]="(selectedTopic?.title?.rendered)|safeHtml" ></span>
+      </div>
+      
+      <div class="img-container">
+        <img [src]="selectedImage"/>
+      </div>
+  
+      <ion-row>
+          <ion-col>
+            <div class="summary-snippet" >
+                <p>
+                  <span [innerHtml]="selectedTopic?.content?.rendered | safeHtml"></span>
+                </p>
+            </div>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+    
+    <div *ngIf="!isSearch && someTopics?.length" class="related-articles">
+      <p class="title section-title">Related Articles:</p>
+      <articles-list
+        [partial]="true"
+        [onlyModel]="true"
+        [category]="selectedCategory"
+        [articles]="someTopics"
+        [selectedCategoryDefaultImage]="selectedCategoryDefaultImage"
+        [selectedCategoryForUppercase]="selectedCategoryForUppercase">
+      </articles-list>
+    </div>
+    
+    <ion-list id="comment-form">
+        <p style="
+          font-weight: bold;
+          font-size: 18px;
+          margin-left: 20px;
+        ">Leave A Comment</p>
+        <ion-item>
+          <ion-textarea [(ngModel)]="commentComment" placeholder="Comment:"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="user.commentName" type="text" placeholder="Name:"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="user.commentEmail" type="email" placeholder="Email:"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="user.commentWebsite" type="text" placeholder="Website:"></ion-input>
+        </ion-item>
+        <ion-item>
+          <button ion-button block padding (click)="postComment()">Post Comment</button>
+        </ion-item>
+      </ion-list>
+
+    <ng-container *ngIf="comments.length">
+      <div id="comments">
+        <p class="title section-title">Comments:</p>
+      <ion-list>
+        <ion-item *ngFor="let comment of comments">
+          <ion-avatar item-start>
+            <img src="{{comment.author_avatar_urls[24]}}">
+          </ion-avatar>
+          <h2>{{comment.author_name}}</h2>
+          <p [innerHTML]="comment.content.rendered"></p>
+        </ion-item>
+      </ion-list>
+      
+      <a *ngIf="true||comments.length > maxComment" (click)="presentCommentsModal()" style="
+          font-size: 14px;text-decoration:underline;
+          margin-left: 20px;">View {{comments.length>1?'All ':''}}Comment{{comments.length>1?'s':''}}</a>
+    
+      </div>
+    </ng-container>
+
+      <ion-grid id="summaries-navigator" padding>
+        <ion-row>
+          <ion-col>
+            <a id="nav-to-previous" href="javascript:void(0)" (click)="swipeActivity({direction: 4})">
+              <ion-icon name="arrow-back"></ion-icon>
+            </a>
+          </ion-col>
+          <ion-col>
+            <a id="nav-to-next" href="javascript:void(0)" (click)="swipeActivity({direction: 2})">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+  </div>
+
+</ion-content>

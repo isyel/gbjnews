@@ -1,0 +1,22 @@
+
+<ion-content>
+    <line-progress-bar [visible]="progressVisible"></line-progress-bar>
+  <ion-refresher (ionRefresh)="refreshArticles($event)" refresherHeight="100px">
+    <ion-refresher-content pullingIcon="arrow-dropdown"
+                           pullingText="{{'Pull to refresh' | translate}}"
+                           refreshingSpinner="crescent"
+                           refreshingText="{{'Refreshing articles' | translate}}...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="isRefreshing" class="refresh-content-cover"></div>
+  <div>
+    <articles-list
+      (loadAnother)="loadAnother($event)"
+      [category]="category"
+      [articles]="topics"
+      [selectedCategoryDefaultImage]="categoryDefaultImage"
+      [selectedCategoryForUppercase]="categoryForUppercase"
+    >
+    </articles-list>
+  </div>
+</ion-content>

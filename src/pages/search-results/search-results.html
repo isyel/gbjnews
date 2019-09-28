@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{"search" | translate}}: "{{keyword}}"</ion-title>
+  </ion-navbar>
+  <line-progress-bar [visible]="progressVisible"></line-progress-bar>
+</ion-header>
+
+<ion-content>
+  
+  <articles-list (loadAnother)="loadAnother($event)" [articles]="results" [selectedCategoryDefaultImage]="selectedCategoryDefaultImage"
+                 [selectedCategoryForUppercase]="selectedCategoryForUppercase" [isSearch]="true" [searchToken]="keyword"
+                 [forcedCategoryTitle]="forcedCategoryTitle">
+  </articles-list>
+</ion-content>

@@ -1,0 +1,45 @@
+line-progress-bar {
+
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+
+    .line{
+        width:100%;
+        z-index: 10;
+        height:5px;
+            
+        @keyframes indicator-anim {
+        
+            /* You could think of as "step 1" */
+            0% {
+                margin-left:0px;
+                width:20%;
+            }
+        
+            50%{
+                background-color: color($colors, primary);
+                width:10%;
+            }
+        
+            /* You could think of as "step 2" */
+            100% {
+                margin-left:80%;
+                width:20%;
+            }
+        }
+
+        .indicator{
+            width:20%;
+            height:100%;
+            animation:indicator-anim;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+        }
+    }
+}

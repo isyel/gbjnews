@@ -1,0 +1,20 @@
+comments {
+    ion-content{
+        ion-list.main-list{
+            .title{
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+            .text{
+                *{
+                    font-size: 13px !important;
+                }
+            }
+
+            .date{
+                font-size: 9px;
+            }
+        }
+    }
+}

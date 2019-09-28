@@ -1,0 +1,17 @@
+page-splash {
+
+    ion-content{
+        img{
+            
+            width:80%;
+
+            &.logo{
+                margin:30% 0px 20% 0px;
+            }
+
+            &.clipart{
+                image-rendering: pixelated;
+            }
+        }
+    }
+}

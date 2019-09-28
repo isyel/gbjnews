@@ -1,0 +1,42 @@
+<div class="articles">
+<div *ngIf="!partial && articles && articles.length === 0" class="not-found-topics">
+  <p>{{"No topics found" | translate}}</p>
+</div>
+
+<div class="card-background-page">
+  <ion-card class="" padding-vertical *ngFor="let article of articles;trackBy: trackById;" (click)="selectTopicAndDisplaySummary(article)" >
+    <div *ngIf="!partial && guessUnique(article) else normalitem" class="img-holder" [ngStyle]="{'background-image': 'url('+getImageUrl(article) +')' }" >
+      <img src="{{getImageUrl(article)}}"/>
+      <div class="info-background">
+        <div class="text-cont">
+          <div>
+            <ion-badge *ngIf="( ( category && category.id == allCategory.id ) || isSearch ) && article._category" [innerHtml]=" article._category.name | safeHtml "></ion-badge>
+            <span class="title " [innerHtml]="article.title.rendered | highlightify:searchToken:'search-highlight':true|safeHtml" ></span>
+          </div>
+          <span class="date">
+              {{article.DaysAgo ? (("BEFORE" | translate) + article.DaysAgo + ("DAYS" | translate)) : (article.DisplayTime | translate)}}
+          </span>
+        </div>
+      </div>
+    </div>
+    <ng-template #normalitem>
+      <ion-item class="normal-item">
+        <ion-thumbnail item-start>
+          <img class="image" [src]="getImageUrl(article)">
+        </ion-thumbnail>
+        <div item-content>
+            <ion-badge *ngIf="( ( category && category.id == allCategory.id ) || isSearch ) && article._category" [innerHtml]=" article._category.name | safeHtml "></ion-badge>
+          <h3 class="title" [innerHtml]="article.title.rendered | highlightify:searchToken:'search-highlight':true|safeHtml">
+          </h3>
+          <span class="date">
+              {{article.DaysAgo ? (("BEFORE" | translate) + article.DaysAgo + ("DAYS" | translate)) : (article.DisplayTime | translate)}}
+          </span>
+        </div>
+      </ion-item>
+    </ng-template>
+  </ion-card>
+  <ion-infinite-scroll *ngIf="!partial" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>
+</div>

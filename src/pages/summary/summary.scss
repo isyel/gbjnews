@@ -1,0 +1,105 @@
+
+page-summary {
+  ion-title {
+    text-align: left;
+  }
+  .grid {
+    padding-top: 0;
+  }
+  img{
+    height: auto;
+  }
+  .img-container {
+    position: relative;
+    margin-bottom: 15px;
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+  }
+  #title {
+    //padding: 12px;
+    position: relative;
+  }
+  .timestamp {
+    text-align: right;
+  }
+  .summary-snippet {
+    padding: 0;
+    margin-top: 0;
+    line-height: 1.5em;
+    p {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    
+  }
+
+  #nav-to-share {
+    text-align: center;
+    font-size: 20px;
+    padding: 5px 10px;
+  }
+
+  #comment-form{
+    margin-bottom:0px !important;
+  }
+
+  .section-title{
+    margin: 0px 0px 0px 15px;
+    font-weight:bold;
+  }
+
+  .related-articles{
+    margin-bottom: 30px;
+  }
+
+  #comments{
+    margin: 15px 5px 15px 10px;
+    
+    ion-list{
+      margin-bottom: 0px;
+
+      p{
+        font-size:12px !important;
+      }
+    }
+  }
+
+  #summaries-navigator {
+    padding: 0px;
+    margin-bottom: 10px;
+    #nav-to-previous {
+      text-align: center;
+      display: block;
+    }
+    #nav-to-next {
+      text-align: center;
+      display: block;
+    }
+    a {
+      padding: 12px 12px;
+      text-decoration: none;
+      max-width: 58px;
+      margin: 0 auto;
+      font-size: x-large;
+      border-radius: 50px;
+    }
+  }
+
+  iframe{
+    display: none;
+  }
+}
+
+
+
+.summary-snippet .wp-caption.alignnone{
+  top:0;
+  left: 0;
+  width: 100% !important;
+}
+
+figure {
+  margin: 1em 0px !important;
+}
