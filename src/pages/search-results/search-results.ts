@@ -3,7 +3,6 @@ import {IonicPage, NavController, NavParams,ToastController} from 'ionic-angular
 import {TopicsProvider} from '../../providers/topics/topics';
 import {CategoriesViewManager} from "../../lib/categories-view-manager";
 import {TranslateService} from "@ngx-translate/core";
-import {LoaderProvider} from "../../providers/loader/loader";
 
 
 @IonicPage()

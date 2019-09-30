@@ -4,7 +4,6 @@ import {ApplicationSettingsProvider} from "../../providers/applicationSettings/a
 import {ApplicationSettings} from "../../models/applicationSettings";
 import {ImageLoadOptionProvider} from "../../providers/image-load-option/image-load-option";
 import {TranslateService} from "@ngx-translate/core";
-import {LoaderProvider} from "../../providers/loader/loader";
 @IonicPage()
 @Component({
   selector: 'page-settings',

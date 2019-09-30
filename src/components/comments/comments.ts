@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import {NavController, NavParams,ToastController, Refresher} from 'ionic-angular';
 
 import {WpV2ApiCaller} from "../../providers/api-service/wp-v2-api-caller";
-import {LoaderProvider} from "../../providers/loader/loader";
 
 import {CustomErrorHandler} from "../../providers/error/customErrorHandler";
 
@@ -41,16 +40,17 @@ export class CommentsComponent {
 
     this.topic = this.navParams.get('topic');
     this.progressVisible = true;
-    this.getComments(false).then(()=>{this.progressVisible = false;}).catch((err)=>{
-      this.progressVisible = false;
-      this.customErrorHandler.handleError(err);
-    });
+    this.getComments(false).then(() => {this.progressVisible = false;}).catch(
+      (err) => {
+        this.progressVisible = false;
+        this.customErrorHandler.handleError(err);
+      });
     this.toaster = null;
   }
 
   private async getComments( _continue = false ){
 
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve,reject) => {
       if(!_continue) this.comments = null;
       this.wpV2ApiCaller.getComments( this.topic , {params:{page:1,offset:!_continue?0:this.comments.length,per_page:this.per_page}} ).then( (comments)=>{
         let prevComments = this.comments||[];
@@ -123,7 +123,8 @@ export class CommentsComponent {
   public closemodal(){
     this.viewCtrl.dismiss();
   }
-  trackById(index, comment) {
+
+  trackById(comment) {
     return comment.id;
   }
 }

@@ -177,7 +177,7 @@ export class TopicsProvider {
         this.getNextCategory(category)
           .then((nextCategory) => {
             this.applicationSettings.getApplicationSettings().then(applicationSettings=>{
-              let index = applicationSettings.categories.map((x:any)=>x.id).indexOf(nextCategory['id']) + 1;
+              index = applicationSettings.categories.map((x:any)=>x.id).indexOf(nextCategory['id']) + 1;
               this.getTopicsAndSelect(nextCategory, SelectTopicEnum.FIRST);
               //this.categoryUpdated.next( index );
             });
@@ -201,7 +201,7 @@ export class TopicsProvider {
           .then((previousCateg) => {
 
             this.applicationSettings.getApplicationSettings().then(applicationSettings=>{
-              let index = applicationSettings.categories.map((x:any)=>x.id).indexOf(previousCateg['id']) + 1;
+              index = applicationSettings.categories.map((x:any)=>x.id).indexOf(previousCateg['id']) + 1;
               this.getTopicsAndSelect(previousCateg, SelectTopicEnum.LAST);
               //this.categoryUpdated.next( index );
             });
