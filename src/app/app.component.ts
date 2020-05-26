@@ -107,7 +107,8 @@ export class MyApp {
       
       this.navCtrl.setRoot(ContainerPage);
     });
-    this.screenOrientation.lock('portrait').then(() => console.log('Screen orientation locked successfully'),
+    this.screenOrientation.lock('portrait').then(() => 
+      console.log('Screen orientation locked successfully'),
       error => console.error('An error occurred while trying to lock screen orientation', error)
     );
   }

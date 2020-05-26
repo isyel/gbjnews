@@ -1,7 +1,6 @@
 import {Component, Input,Output,EventEmitter} from '@angular/core';
 import {NavController, App} from "ionic-angular";
 import {TopicsProvider} from "../../providers/topics/topics";
-import {LoaderProvider} from "../../providers/loader/loader";
 import {NetworkProvider} from "../../providers/network/network";
 import {Subscription} from "rxjs/Subscription";
 import {Platform} from 'ionic-angular';
@@ -40,11 +39,11 @@ export class ArticlesListComponent {
 
   constructor(public navCtrl: NavController,
     private appCtrl: App,
-              protected topicsProvider: TopicsProvider,
-              protected imgLoadProvider: ImageLoadOptionProvider,
-              protected networkProvider: NetworkProvider,
-              protected translate: TranslateService,private settingsProvider: ApplicationSettingsProvider,
-              protected platform: Platform,) {}
+    protected topicsProvider: TopicsProvider,
+    protected imgLoadProvider: ImageLoadOptionProvider,
+    protected networkProvider: NetworkProvider,
+    protected translate: TranslateService,private settingsProvider: ApplicationSettingsProvider,
+    protected platform: Platform) {}
 
   public selectTopicAndDisplaySummary(topic: any) {
     if(this.onlyModel){

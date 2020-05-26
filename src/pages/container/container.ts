@@ -1,12 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, MenuController, App } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, NavParams, App } from 'ionic-angular';
 import {AllTopicsPage} from '../all-topics/all-topics';
-import { CustomErrorHandler } from '../../providers/error/customErrorHandler';
-import { LoaderProvider } from '../../providers/loader/loader';
 import { TopicsProvider } from '../../providers/topics/topics';
 import { ApplicationSettingsProvider } from '../../providers/applicationSettings/applicationSettings';
 import { ApplicationSettings } from '../../models/applicationSettings';
-import { SuperTabsComponent, SuperTabsController } from 'ionic2-super-tabs';
+import { SuperTabsController } from 'ionic2-super-tabs';
 
 /**
  * Generated class for the ContainerPage page.
@@ -32,9 +30,9 @@ export class ContainerPage {
 
   private active = true;
 
-  constructor(private superTabsCtrl: SuperTabsController,public navCtrl: NavController, public navParams: NavParams,
-    private topicsProvider: TopicsProvider,
-    private appCtrl: App,private settingsProvider: ApplicationSettingsProvider,private customErrorHandler:CustomErrorHandler,) {
+  constructor(private superTabsCtrl: SuperTabsController, public navCtrl: NavController, 
+    private topicsProvider: TopicsProvider, private appCtrl: App, 
+    private settingsProvider: ApplicationSettingsProvider, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
